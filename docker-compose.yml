@@ -1,27 +1,16 @@
 elasticsearch:
-  image: tzoratto/elasticsearch-shield
-  command: elasticsearch -Des.network.host=0.0.0.0
+  build: elasticsearch/
   ports:
     - "9200:9200"
-    - "9300:9300"
-  env_file: .env
-
 logstash:
   build: logstash/
-  command: logstash -f /etc/logstash/conf.d/logstash.conf
-  volumes:
-    - ./logstash/config:/etc/logstash/conf.d
   ports:
     - "5000:5000"
   links:
     - elasticsearch
-  env_file: .env
 kibana:
-  image: tzoratto/kibana-shield
-  volumes:
-    - ./kibana/config/:/opt/kibana/config/
+  build: kibana/
   ports:
     - "5601:5601"
   links:
     - elasticsearch
-  env_file: .env
