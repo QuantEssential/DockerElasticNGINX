@@ -23,19 +23,22 @@
 # For information on supported formats and syntax for the config file, see
 # <http://elasticsearch.org/guide/en/elasticsearch/reference/current/setup-configuration.html>
 
-searchguard.ssl.transport.keystore_filepath: node-0-keystore.jks
-searchguard.ssl.transport.keystore_password: changeit
-searchguard.ssl.transport.truststore_filepath: truststore.jks
-searchguard.ssl.transport.truststore_password: changeit
-searchguard.ssl.transport.enforce_hostname_verification: false
-searchguard.ssl.transport.keystore_filepath: node-1-keystore.jks
-searchguard.ssl.transport.keystore_filepath: node-2-keystore.jks
+script.inline: on
+script.indexed: on
 
-searchguard.authcz.admin_dn:
-  - cn=admin,ou=Test,ou=ou,dc=company,dc=com
-  - cn=smith,ou=IT,ou=IT,dc=company,dc=com
-searchguard.ssl.transport.enabled: false
-security.manager.enabled=false
+#searchguard.ssl.transport.keystore_filepath: node-0-keystore.jks
+#searchguard.ssl.transport.keystore_password: changeit
+#searchguard.ssl.transport.truststore_filepath: truststore.jks
+#searchguard.ssl.transport.truststore_password: changeit
+#searchguard.ssl.transport.enforce_hostname_verification: false
+#searchguard.ssl.transport.keystore_filepath: node-1-keystore.jks
+#searchguard.ssl.transport.keystore_filepath: node-2-keystore.jks
+
+#searchguard.authcz.admin_dn:
+#  - cn=admin,ou=Test,ou=ou,dc=company,dc=com
+#  - cn=smith,ou=IT,ou=IT,dc=company,dc=com
+#searchguard.ssl.transport.enabled: true
+#security.manager.enabled=false
 
 ################################### Cluster ###################################
 
@@ -214,7 +217,6 @@ security.manager.enabled=false
 # Set the bind address specifically (IPv4 or IPv6):
 #
 #network.bind_host: 192.168.0.1
-network.bind_host: 0
 # Set the address other nodes will use to communicate with this node. If not
 # set, it is automatically derived. It must point to an actual IP address.
 #

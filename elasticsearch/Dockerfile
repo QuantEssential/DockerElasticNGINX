@@ -1,4 +1,5 @@
-FROM elasticsearch:2.3.4
+FROM elasticsearch:latest
 
-RUN plugin install -b com.floragunn/search-guard-ssl/2.3.4.14
-RUN plugin install -b com.floragunn/search-guard-2/2.3.4.4
+ENV ES_JAVA_OPTS="-Des.path.conf=/etc/elasticsearch"
+
+COPY config/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
