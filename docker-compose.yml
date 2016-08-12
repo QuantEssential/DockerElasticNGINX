@@ -2,12 +2,12 @@ elasticsearch:
   build: elasticsearch/
   command: elasticsearch -Des.network.host=0.0.0.0
 
+
 logstash:
   build: logstash/
-  ports:
-    - "5000:5000"
   links:
     - elasticsearch
+
 
 kibana:
   build: kibana/
@@ -19,8 +19,11 @@ nginx:
   image: nginx:1.9.6
   ports:
     - "8000:80"
+    - "8888:8888"
   links:
     - kibana
+    - elasticsearch
+
 
   volumes:
     - ./nginx/nginx.conf:/etc/nginx/nginx.conf
